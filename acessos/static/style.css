@@ -1,0 +1,216 @@
+body {
+    font-family: Arial, sans-serif;
+    background: url('/static/padrao.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px; /* Maior largura para acomodar o gráfico */
+    margin: 30px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+h2 {
+    text-align: center;
+    color: #007BFF;
+    margin-bottom: 20px;
+}
+
+/* Melhorando a exibição do gráfico */
+.grafico-container {
+    overflow-x: auto; /* Adiciona rolagem horizontal se necessário */
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+canvas {
+    display: block;
+    max-width: 100%; /* Gráfico ocupa o máximo do container */
+    height: 500px; /* Altura suficiente para descrever os dados */
+    margin: 0 auto;
+    border: 1px solid #ddd;
+    background-color: rgba(240, 240, 240, 0.7); /* Fundo claro */
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+/* Estilo de links e botões */
+a, button {
+    width: 100%;
+    margin: 15px 0;
+    padding: 12px;
+    font-size: 1rem;
+    text-align: center;
+    border-radius: 4px;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+a {
+    display: block;
+    color: #007BFF;
+    background: none;
+    border: 1px solid #007BFF;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+a:hover {
+    background-color: #007BFF;
+    color: white;
+}
+
+button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+    .container {
+        max-width: 95%;
+    }
+
+    canvas {
+        height: 400px; /* Ajusta a altura para telas menores */
+    }
+}
+
+@media (max-width: 768px) {
+    canvas {
+        height: 300px; /* Altura menor em telas pequenas */
+    }
+
+    a, button {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    h2 {
+        font-size: 1.2em;
+    }
+
+    a, button {
+        font-size: 0.8rem;
+        padding: 10px;
+    }
+
+    canvas {
+        height: 250px; /* Ajuste final para telas muito pequenas */
+    }
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: url('/static/padrao.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+h2 {
+    text-align: center;
+    color: #007BFF;
+    margin-bottom: 20px;
+}
+
+/* Melhorando o gráfico */
+.grafico-container {
+    overflow-x: auto;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+canvas {
+    display: block;
+    max-width: 100%;
+    height: 500px;
+    margin: 0 auto;
+    border: 1px solid #ddd;
+    background-color: rgba(240, 240, 240, 0.7);
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+/* Ajustando descrições longas */
+.grafico-descricao {
+    word-wrap: break-word; /* Quebra o texto automaticamente */
+    text-overflow: ellipsis; /* Adiciona "..." para textos longos */
+    overflow: hidden;
+    white-space: nowrap; /* Impede o texto de ocupar múltiplas linhas inicialmente */
+    max-width: 100%; /* Mantém o texto dentro do container */
+    font-size: 0.9rem; /* Tamanho menor da fonte */
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+    .container {
+        max-width: 95%;
+    }
+
+    canvas {
+        height: 400px;
+    }
+}
+
+@media (max-width: 768px) {
+    .grafico-descricao {
+        font-size: 0.8rem; /* Reduz a fonte em telas pequenas */
+        white-space: normal; /* Permite quebra de linha */
+        overflow: visible; /* Exibe o texto completo para melhor leitura */
+    }
+
+    canvas {
+        height: 300px;
+    }
+
+    a, button {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    h2 {
+        font-size: 1.2em;
+    }
+
+    .grafico-descricao {
+        font-size: 0.7rem; /* Ajusta a fonte para telas muito pequenas */
+        max-width: 100%;
+    }
+
+    canvas {
+        height: 250px;
+    }
+
+    a, button {
+        font-size: 0.8rem;
+        padding: 10px;
+    }
+}

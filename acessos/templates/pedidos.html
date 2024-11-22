@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedidos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Crie com o flash um bloco de menssagens  -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    
+    <h1>Pedidos</h1>
+
+    <form method="POST" action="{{ url_for('pedidos') }}">
+        <label for="modelo">Modelo:</label>
+        <input type="text" name="modelo" id="modelo" required>
+        <label for="quantidade">Quantidade:</label>
+        <input type="number" name="quantidade" id="quantidade" required>
+        <button type="submit">Adicionar Pedido</button>
+    </form>
+
+    <h2>Lista de Pedidos</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Modelo</th>
+                <th>Quantidade</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pedido in pedidos %}
+            <tr>
+                <td>{{ pedido[0] }}</td>
+                <td>{{ pedido[1] }}</td>
+                <td>{{ pedido[2] }}</td>
+                <td>
+                    <a href="{{ url_for('editar_pedido', id=pedido[0]) }}">Editar</a>
+                    <form method="POST" action="{{ url_for('deletar_pedido', id=pedido[0]) }}" style="display:inline;">
+                        <button type="submit" onclick="return confirm('Deseja realmente excluir este pedido?')">Excluir</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ url_for('grafico') }}">Visualizar Gráfico</a>
+    <a href="{{ url_for('logout') }}">Logout</a>
+</body>
+</html>

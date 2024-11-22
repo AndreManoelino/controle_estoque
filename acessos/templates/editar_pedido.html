@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Pedido</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Editar Pedido</h1>
+    <form method="POST" action="{{ url_for('editar_pedido', id=id) }}">
+        <label for="modelo">Modelo:</label>
+        <input type="text" name="modelo" id="modelo" value="{{ pedido[0] }}" required>
+        <label for="quantidade">Quantidade:</label>
+        <input type="number" name="quantidade" id="quantidade" value="{{ pedido[1] }}" required>
+        <button type="submit">Salvar Alterações</button>
+    </form>
+    <a href="{{ url_for('pedidos') }}">Voltar</a>
+</body>
+</html>

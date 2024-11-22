@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gráfico de Pedidos</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h2>Gráfico de Pedidos</h2>
+        <canvas id="graficoPedidos"></canvas>
+        <a href="/pedidos">Voltar</a>
+    </div>
+
+    <script>
+        // Função para obter os dados da API e renderizar o gráfico
+        fetch('/api/dados_grafico')
+            .then(response => response.json())
+            .then(data => {
+                var ctx = document.getElementById('graficoPedidos').getContext('2d');
+                var graficoPedidos = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: data.modelos,  // Modelos dos pedidos
+                        datasets: [{
+                            label: 'Quantidade de Pedidos',
+                            data: data.quantidades,  // Quantidades dos pedidos
+                            backgroundColor: 'rgba(0, 123, 255, 0.5)',
+                            borderColor: 'rgba(0, 123, 255, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            })
+            .catch(error => console.error('Erro ao carregar os dados do gráfico:', error));
+    </script>
+</body>
+</html>
